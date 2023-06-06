@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container" style="margin-top: 10px; border-radius: 5px; border: 1px solid grey; padding: 10px;">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="border-bottom mb-4">Economic blast shock wave </legend>
+            {{ form.as_table }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
