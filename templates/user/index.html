@@ -1,0 +1,223 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Checkout example for Bootstrap</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="{% static "css/forms.css" %}" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container">
+    <div class="text">
+        <h5>Опитування задля картографування ризиків автозаправних станцій (АЗС) Одеського регіону</h5>
+        <hr class="mb-4">
+        <p>Опитування проводиться в рамках виконання Спільний україно-британський науковий проект в межах партнерства Національного університету «Одеська політехніка» із Університетом м. Портсмут (Велика Британія) (детальніше)</p>
+        <p>Мета опитування: Ранжування економічних, соціальних та екологічних факторів уразливості АЗС в залежності від можливого виду сценарію надзвичайної ситуації.</p>
+        <p>Реалізація проекту є вкрай важливим для безпеки мешканців нашого улюбленого міста та області</p>
+        <hr class="mb-4">
+    </div>
+    <div class="card">
+    <form class="needs-validation" onsubmit="return handleData()" novalidate>
+        <div class="row">
+            <div class="col">
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="Name">Ім'я та побатькові</label>
+                    {{form.username}}
+                    <div class="invalid-feedback">
+                        Введіть коректне ім'я
+                    </div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <div class="form-control-label">Стать</div>
+                    <div class="d-block">
+                        {% for sex in form.sex %}
+                            <div class="custom-control custom-radio">
+                                {{ sex }}
+                                {% if forloop.last %}
+                                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                {%endif%}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="age">Вік</label>
+                    {{ form.age }}
+
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="income">Дохід</label>
+                    <select class="custom-select d-block w-100" id="income" required>
+                        <option value="">Обрати...</option>
+                        <option>Маленький</option>
+                        <option>Середній</option>
+                        <option>Великий</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="form-control-label">Сімейний стан</div>
+                <div class="d-block mb-3">
+                    <div class="custom-control custom-radio">
+                        <input id="unmarried" name="radio-stacked" type="radio" class="custom-control-input" required>
+                        <label class="form-check-label" for="unmarried">Не одружений</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="married" name="radio-stacked" type="radio" class="custom-control-input" required>
+                        <label class="form-check-label" for="married">Одружений</label>
+                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                    </div>
+                </div>
+                <div class="form-control-label">Наявність дітей</div>
+                <div class="d-block mb-3">
+                    <div class="custom-control custom-radio">
+                        <input id="have_children" name="radio-stacked" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="have_children">Є діти</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="not_have_children" name="radio-stacked" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="not_have_children">Немає дітей</label>
+                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="education">Освіта</label>
+                    <select class="custom-select d-block w-100" id="education" required>
+                        <option value="">Обрати...</option>
+                        <option>Повна середня</option>
+                        <option>Професійна-технічна</option>
+                        <option>Базова вища</option>
+                        <option>Повна вища</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="science_degree">Науковий ступінь</label>
+                    <select class="custom-select d-block w-100" id="science_degree" required>
+                        <option value="">Обрати...</option>
+                        <option>Немає</option>
+                        <option>Кандидат наук (доктор філософії)</option>
+                        <option>Доктор наук</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="car_experience">Досвіт користуванням автомобілю</label>
+                    <select class="custom-select d-block w-100" id="car_experience" required>
+                        <option value="">Обрати стаж...</option>
+                        <option>Немає/Немає <прав></прав></option>
+                        <option>Менше 1 року</option>
+                        <option>1-2 роки</option>
+                        <option>3-4 роки</option>
+                        <option>5-10 років</option>
+                        <option>10+ років</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="form-control-label">Спрямування освіти</div>
+                <div onchange="return handleData()">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="technical" name="education">
+                        <label class="custom-control-label" for="technical">Технічна</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="economical" name="education">
+                        <label class="custom-control-label" for="economical">Економічна</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ecological" name="education">
+                        <label class="custom-control-label" for="ecological">Екологічна</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="humanitarian" name="education">
+                        <label class="custom-control-label" for="humanitarian">Гуманітарна</label>
+                    </div>
+                    <div style="visibility:hidden;" id="chk_option_error">Оберіть одну з відповідей</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="work_place">Організація, в якій працюєте</label>
+                    <select class="custom-select d-block w-100" id="work_place" required>
+                        <option value="">Обрати...</option>
+                        <option>Бюджетна</option>
+                        <option>Комерційна</option>
+                        <option>Не працюю/студент</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="location">Район розташування</label>
+                    <select class="custom-select d-block w-100" id="location" required>
+                        <option value="">Обрати...</option>
+                        <option>Малиновський</option>
+                        <option>Приморський</option>
+                        <option>Київський</option>
+                        <option>Суворовський</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="form-control-label">Чи розташовано поблизу АЗС?</div>
+                <div class="d-block mb-3">
+                    <div class="custom-control custom-radio">
+                        <input id="station_yes" name="radio-stacked" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="station_yes">Так</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="station_no" name="radio-stacked" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="station_no">Ні</label>
+                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                    </div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="home">Житло</label>
+                    <select class="custom-select d-block w-100" id="home" required>
+                        <option value="">Обрати...</option>
+                        <option>Часний будинок</option>
+                        <option>Квартира</option>
+                    </select>
+                    <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                </div>
+                <div class="col-md-10 mb-3">
+                    <label class="form-control-label" for="email">Email для зворотнього зв'язку</label>
+                    <input type="email" class="form-control" id="email" placeholder="" value="" required>
+                    <div class="invalid-feedback">Введіть коректний емейл</div>
+                </div>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <div class="text-center col-md-12">
+            <button class="btn-primary btn-lg btn-block" type="submit">Перейти до опитування</button>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/holder.min.js"></script>
+<script src="{% static "js/form-checkbox-required.js" %}"></script>
+<script src="{% static "js/input-cheking.js" %}"></script>
+<script>
+
+</script>
+</body>
+</html>

@@ -10,19 +10,21 @@ from user.forms import UserRegisterForm
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
+        print(form.errors)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.email[:user.email.index("@")]
-            user.save()
+            # user = form.save(commit=False)
+            # user.username = user.email[:user.email.index("@")]
+            user = form.save()
             login(request, user)
             return redirect('ranking')
         else:
             if form.has_error('email'):
-                return render(request, 'user/already_done_view.html')
+                return render(request, 'user/index.html')
 
     else:
         form = UserRegisterForm()
-    return render(request, 'user/registration_view.html', {'form': form})
+        print([sex.choice_label for sex in form['sex']])
+    return render(request, 'user/index.html', {'form': form})
 
 
 def log_out(request):

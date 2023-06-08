@@ -9,7 +9,7 @@
         <form method="post">
             {% csrf_token %}
             <legend class="border-bottom mb-4">User registration</legend>
-            {{ form.email }}
+            {{ form.as_table }}
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
