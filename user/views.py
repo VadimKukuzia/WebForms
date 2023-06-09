@@ -10,6 +10,7 @@ from user.forms import UserRegisterForm
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
+        print(form)
         print(form.errors)
         if form.is_valid():
             # user = form.save(commit=False)
@@ -23,7 +24,6 @@ def register(request):
 
     else:
         form = UserRegisterForm()
-        print([sex.choice_label for sex in form['sex']])
     return render(request, 'user/index.html', {'form': form})
 
 
