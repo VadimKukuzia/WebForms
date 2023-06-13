@@ -1,59 +1,81 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>Checkout example for Bootstrap</title>
+    <title>Checkout example for Bootstrap</title>
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/forms.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="{% static "css/forms.css" %}" rel="stylesheet">
 </head>
 
 <body class="bg-light">
 
 <div class="container">
-  <div class="py-2 text">
-    <h5>Проранжуйте фактори в залежності від їх важливості за місцями (починаючи з найбільш вагомого як 1  і найменш важливого як 10, допустимі однакові значення)</h5>
+    <div class="py-2 text">
+        <h5>Проранжуйте фактори в залежності від їх важливості за місцями (починаючи з найбільш вагомого як 1 і найменш
+            важливого як 10, допустимі однакові значення)</h5>
+        <hr class="mb-4">
+    </div>
+    <table class="table table-striped">
+        <thead class="thead">
+        <tr>
+            <th scope="col">Групи факторів/Сценарії</th>
+            <th scope="col">Економічні</th>
+            <th scope="col">Соціальні</th>
+            <th scope="col">Екологічні</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">Вибух нафтопродуктів із утворенням ударної хвилі (посилання на опис);</th>
+            <td>10 факторів - {% if economic_blast_wave_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "economic-blast-wave" %}">Перейти до ранжування</a>
+            </td>
+            <td>10 факторів - {% if social_blast_wave_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "social-blast-wave" %}">Перейти до ранжування</a>
+            </td>
+            <td>11 факторів - {% if environmental_blast_wave_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "environmental-blast-wave" %}">Перейти до ранжування</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Пожежа проливу нафтопродуктів (посилання на опис);</th>
+            <td>10 факторів - {% if economic_fire_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "economic-fire" %}">Перейти до ранжування</a>
+            </td>
+            <td>10 факторів - {% if social_fire_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "social-fire" %}">Перейти до ранжування</a>
+            </td>
+            <td>11 факторів - {% if environmental_fire_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "environmental-fire" %}">Перейти до ранжування</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Вибух нафтопродуктів із утворенням «вогняної кулі» (посилання на опис)</th>
+            <td>10 факторів - {% if economic_blast_fireball_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "economic-blast-fireball" %}">Перейти до ранжування</a>
+            </td>
+            <td>10 факторів - {% if social_blast_fireball_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "social-blast-fireball" %}">Перейти до ранжування</a>
+            </td>
+            <td>11 факторів - {% if environmental_blast_fireball_status %}<span>&#10003;</span>{% endif %}<br>
+                <a href="{% url "environmental-blast-fireball" %}">Перейти до ранжування</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
     <hr class="mb-4">
-  </div>
-  <table class="table table-striped">
-    <thead class="thead">
-    <tr>
-      <th scope="col">Групи факторів/Сценарії</th>
-      <th scope="col">Економічні</th>
-      <th scope="col">Соціальні</th>
-      <th scope="col">Екологічні</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row">Вибух нафтопродуктів із утворенням ударної хвилі (посилання на опис);</th>
-      <td>10 факторів (посилання на опис)</td>
-      <td>10 факторів (посилання на опис)</td>
-      <td>11 факторів (посилання на опис)</td>
-    </tr>
-    <tr>
-      <th scope="row">Пожежа проливу нафтопродуктів (посилання на опис);</th>
-      <td>10 факторів (посилання на опис)</td>
-      <td>10 факторів (посилання на опис)</td>
-      <td>11 факторів (посилання на опис)</td>
-    </tr>
-    <tr>
-      <th scope="row">Вибух нафтопродуктів із утворенням «вогняної кулі» (посилання на опис)</th>
-      <td>10 факторів (посилання на опис)</td>
-      <td>10 факторів (посилання на опис)</td>
-      <td>11 факторів (посилання на опис)</td>
-    </tr>
-    </tbody>
-  </table>
-  <hr class="mb-4">
-  <div class="text-center col-md-12">
-    <button id="back" class="btn-primary btn-lg btn-block">Повернутися назад</button>
-    <button id='delete_row' class="btn-primary btn-lg btn-block" type="submit">Надіслати</button>
-  </div>
+    <div class="text-center col-md-12">
+        <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "update-user" %}">Повернутися назад</a>
+        <a  class="btn btn-outline-success btn-block" type="submit" href="{% url "log-out" %}">Надіслати</a>
+    </div>
 </div>
 
 </body>

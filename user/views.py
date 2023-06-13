@@ -10,22 +10,35 @@ from user.forms import UserRegisterForm
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        print(form)
-        print(form.errors)
         if form.is_valid():
-            # user = form.save(commit=False)
-            # user.username = user.email[:user.email.index("@")]
             user = form.save()
             login(request, user)
             return redirect('ranking')
         else:
-            if form.has_error('email'):
-                return render(request, 'user/index.html')
+            if form.has_error('email') or form.has_error('username'):
+                return render(request, 'user/already_done_view.html')
 
     else:
         form = UserRegisterForm()
     return render(request, 'user/index.html', {'form': form})
 
+def update(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST, instance=request.user)
+        if form.is_valid():
+            print("vadid")
+            user = form.save()
+            login(request, user)
+            return redirect('ranking')
+        else:
+            print(form.errors)
+            print("not")
+            if form.has_error('email'):
+                return render(request, 'user/index.html')
+
+    else:
+        form = UserRegisterForm(instance=request.user)
+    return render(request, 'user/index.html', {'form': form})
 
 def log_out(request):
     logout(request)
