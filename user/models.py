@@ -7,6 +7,7 @@ from django.db import models
 class UserManager(BaseUserManager):
 
     def create_user(self, username, email, password=None):
+        username = email[:email.index('@')]
         if email is None:
             raise TypeError('Users should have a Email')
 
@@ -28,6 +29,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
+    name = models.CharField(max_length=255, unique=False)
 
     sex = models.CharField()
     age = models.IntegerField()

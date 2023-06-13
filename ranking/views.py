@@ -5,28 +5,52 @@ from .utils import check_if_request_user_answered_ranking
 
 
 # Create your views here.
-
-@login_required(login_url='register')
-def index(request):
-    user = request.user.id
+def get_statuses(user):
     economic_blast_wave_status = check_if_request_user_answered_ranking(user,
                                                                         EconomicBlastShockWave.objects.all().values())
     economic_fire_status = check_if_request_user_answered_ranking(user,
                                                                   EconomicFire.objects.all().values())
     economic_blast_fireball_status = check_if_request_user_answered_ranking(user,
                                                                             EconomicBlastFireBall.objects.all().values())
-
     social_blast_wave_status = check_if_request_user_answered_ranking(user,
                                                                       SocialBlastShockWave.objects.all().values())
     social_fire_status = check_if_request_user_answered_ranking(user, SocialFire.objects.all().values())
     social_blast_fireball_status = check_if_request_user_answered_ranking(user,
                                                                           SocialBlastFireBall.objects.all().values())
-
     environmental_blast_wave_status = check_if_request_user_answered_ranking(user,
                                                                              EnvironmentalBlastShockWave.objects.all().values())
     environmental_fire_status = check_if_request_user_answered_ranking(user, EnvironmentalFire.objects.all().values())
     environmental_blast_fireball_status = check_if_request_user_answered_ranking(user,
                                                                                  EnvironmentalBlastFireBall.objects.all().values())
+    return economic_blast_fireball_status, \
+        economic_blast_wave_status, \
+        economic_fire_status, \
+        environmental_blast_fireball_status, \
+        environmental_blast_wave_status, \
+        environmental_fire_status, \
+        social_blast_fireball_status, \
+        social_blast_wave_status, social_fire_status
+
+
+@login_required(login_url='register')
+def index(request):
+    user = request.user.id
+    economic_blast_fireball_status, \
+        economic_blast_wave_status, \
+        economic_fire_status, \
+        environmental_blast_fireball_status, \
+        environmental_blast_wave_status, \
+        environmental_fire_status, \
+        social_blast_fireball_status, \
+        social_blast_wave_status, \
+        social_fire_status = get_statuses(user)
+
+    any_column_is_ready = True if any(
+        [all([economic_blast_wave_status, economic_fire_status, economic_blast_fireball_status]),
+         all([social_blast_wave_status, social_fire_status, social_blast_fireball_status]),
+         all([environmental_blast_fireball_status, environmental_fire_status,
+             environmental_blast_wave_status])]) else False
+
     context = {
         'economic_blast_wave_status': economic_blast_wave_status,
         'economic_fire_status': economic_fire_status,
@@ -37,6 +61,7 @@ def index(request):
         'environmental_blast_wave_status': environmental_blast_wave_status,
         'environmental_fire_status': environmental_fire_status,
         'environmental_blast_fireball_status': environmental_blast_fireball_status,
+        'any_column_is_ready': any_column_is_ready
     }
     return render(request, 'ranking/criteria_table.html', context)
 

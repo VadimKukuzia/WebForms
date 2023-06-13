@@ -78,7 +78,7 @@ class MyRadioSelect(django.forms.RadioSelect):
 
 
 class UserRegisterForm(UserCreationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'id': "Name"}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'id': "Name"}))
     sex = forms.CharField(label="Стать", widget=MyRadioSelect(choices=sex_choices,
                                                               attrs={'class': 'custom-control-input',
                                                                      'name': 'sex'}))
@@ -152,7 +152,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'sex', 'age', 'income', 'marital_status', 'children_status', 'education', 'degree',
+        fields = ('name', 'sex', 'age', 'income', 'marital_status', 'children_status', 'education', 'degree',
                   'driving_experience', 'technical_education_direction', 'economical_education_direction',
                   'environmental_education_direction', 'humanitarian_education_direction', 'working_organization',
                   'district', 'petrol_station_nearby', 'dwelling', 'email')

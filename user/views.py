@@ -11,16 +11,20 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.username = user.email[:user.email.index("@")]
+            user.save()
             login(request, user)
             return redirect('ranking')
         else:
+            print(form.errors)
             if form.has_error('email') or form.has_error('username'):
                 return render(request, 'user/already_done_view.html')
 
     else:
         form = UserRegisterForm()
     return render(request, 'user/index.html', {'form': form})
+
 
 def update(request):
     if request.method == 'POST':
@@ -40,6 +44,7 @@ def update(request):
         form = UserRegisterForm(instance=request.user)
     return render(request, 'user/index.html', {'form': form})
 
+
 def log_out(request):
     logout(request)
-    return redirect('register')
+    return render(request, 'user/thanks.html')
