@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'WebForms.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "web_forms_django_db",
-        "USER": "django_user",
+        "NAME": "forms_db",
+        "USER": "django_forms_user",
         "PASSWORD": os.environ.get('DATABASE_PASSWORD'),
         "HOST": os.environ.get('DATABASE_HOST'),
         "PORT": "5432",
