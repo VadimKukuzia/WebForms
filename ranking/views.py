@@ -35,6 +35,7 @@ def get_statuses(user):
 @login_required(login_url='register')
 def index(request):
     if not request.user.is_authenticated:
+        print("not")
         return redirect('register')
     else:
         user = request.user.id
