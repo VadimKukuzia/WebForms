@@ -34,6 +34,8 @@ def get_statuses(user):
 
 @login_required(login_url='register')
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('register')
     user = request.user.id
     economic_blast_fireball_status, \
         economic_blast_wave_status, \
