@@ -36,36 +36,37 @@ def get_statuses(user):
 def index(request):
     if not request.user.is_authenticated:
         return redirect('register')
-    user = request.user.id
-    economic_blast_fireball_status, \
-        economic_blast_wave_status, \
-        economic_fire_status, \
-        environmental_blast_fireball_status, \
-        environmental_blast_wave_status, \
-        environmental_fire_status, \
-        social_blast_fireball_status, \
-        social_blast_wave_status, \
-        social_fire_status = get_statuses(user)
+    else:
+        user = request.user.id
+        economic_blast_fireball_status, \
+            economic_blast_wave_status, \
+            economic_fire_status, \
+            environmental_blast_fireball_status, \
+            environmental_blast_wave_status, \
+            environmental_fire_status, \
+            social_blast_fireball_status, \
+            social_blast_wave_status, \
+            social_fire_status = get_statuses(user)
 
-    any_column_is_ready = True if any(
-        [all([economic_blast_wave_status, economic_fire_status, economic_blast_fireball_status]),
-         all([social_blast_wave_status, social_fire_status, social_blast_fireball_status]),
-         all([environmental_blast_fireball_status, environmental_fire_status,
-             environmental_blast_wave_status])]) else False
+        any_column_is_ready = True if any(
+            [all([economic_blast_wave_status, economic_fire_status, economic_blast_fireball_status]),
+             all([social_blast_wave_status, social_fire_status, social_blast_fireball_status]),
+             all([environmental_blast_fireball_status, environmental_fire_status,
+                 environmental_blast_wave_status])]) else False
 
-    context = {
-        'economic_blast_wave_status': economic_blast_wave_status,
-        'economic_fire_status': economic_fire_status,
-        'economic_blast_fireball_status': economic_blast_fireball_status,
-        'social_blast_wave_status': social_blast_wave_status,
-        'social_fire_status': social_fire_status,
-        'social_blast_fireball_status': social_blast_fireball_status,
-        'environmental_blast_wave_status': environmental_blast_wave_status,
-        'environmental_fire_status': environmental_fire_status,
-        'environmental_blast_fireball_status': environmental_blast_fireball_status,
-        'any_column_is_ready': any_column_is_ready
-    }
-    return render(request, 'ranking/criteria_table.html', context)
+        context = {
+            'economic_blast_wave_status': economic_blast_wave_status,
+            'economic_fire_status': economic_fire_status,
+            'economic_blast_fireball_status': economic_blast_fireball_status,
+            'social_blast_wave_status': social_blast_wave_status,
+            'social_fire_status': social_fire_status,
+            'social_blast_fireball_status': social_blast_fireball_status,
+            'environmental_blast_wave_status': environmental_blast_wave_status,
+            'environmental_fire_status': environmental_fire_status,
+            'environmental_blast_fireball_status': environmental_blast_fireball_status,
+            'any_column_is_ready': any_column_is_ready
+        }
+        return render(request, 'ranking/criteria_table.html', context)
 
 
 # Economical
