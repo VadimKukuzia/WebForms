@@ -34,6 +34,7 @@ def get_statuses(user):
 
 @login_required(login_url='register')
 def index(request):
+    print("ranking")
     if not request.user.is_authenticated:
         print("not")
         return redirect('register')
