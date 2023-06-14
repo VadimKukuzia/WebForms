@@ -1,54 +1,36 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.decorators.cache import never_cache
+
 from .forms import *
 from .utils import check_if_request_user_answered_ranking
 
-
 # Create your views here.
-def get_statuses(user):
-    economic_blast_wave_status = check_if_request_user_answered_ranking(user,
-                                                                        EconomicBlastShockWave.objects.all().values())
-    economic_fire_status = check_if_request_user_answered_ranking(user,
-                                                                  EconomicFire.objects.all().values())
-    economic_blast_fireball_status = check_if_request_user_answered_ranking(user,
-                                                                            EconomicBlastFireBall.objects.all().values())
-    social_blast_wave_status = check_if_request_user_answered_ranking(user,
-                                                                      SocialBlastShockWave.objects.all().values())
-    social_fire_status = check_if_request_user_answered_ranking(user, SocialFire.objects.all().values())
-    social_blast_fireball_status = check_if_request_user_answered_ranking(user,
-                                                                          SocialBlastFireBall.objects.all().values())
-    environmental_blast_wave_status = check_if_request_user_answered_ranking(user,
-                                                                             EnvironmentalBlastShockWave.objects.all().values())
-    environmental_fire_status = check_if_request_user_answered_ranking(user, EnvironmentalFire.objects.all().values())
-    environmental_blast_fireball_status = check_if_request_user_answered_ranking(user,
-                                                                                 EnvironmentalBlastFireBall.objects.all().values())
-    return economic_blast_fireball_status, \
-        economic_blast_wave_status, \
-        economic_fire_status, \
-        environmental_blast_fireball_status, \
-        environmental_blast_wave_status, \
-        environmental_fire_status, \
-        social_blast_fireball_status, \
-        social_blast_wave_status, social_fire_status
-
-
 @login_required(login_url='register')
+@never_cache
 def index(request):
-    print("ranking")
     if not request.user.is_authenticated:
-        print("not")
         return redirect('register')
     else:
         user = request.user.id
-        economic_blast_fireball_status, \
-            economic_blast_wave_status, \
-            economic_fire_status, \
-            environmental_blast_fireball_status, \
-            environmental_blast_wave_status, \
-            environmental_fire_status, \
-            social_blast_fireball_status, \
-            social_blast_wave_status, \
-            social_fire_status = get_statuses(user)
+
+        economic_blast_wave_status = check_if_request_user_answered_ranking(user,
+                                                                            EconomicBlastShockWave.objects.all().values())
+        economic_fire_status = check_if_request_user_answered_ranking(user,
+                                                                      EconomicFire.objects.all().values())
+        economic_blast_fireball_status = check_if_request_user_answered_ranking(user,
+                                                                                EconomicBlastFireBall.objects.all().values())
+        social_blast_wave_status = check_if_request_user_answered_ranking(user,
+                                                                          SocialBlastShockWave.objects.all().values())
+        social_fire_status = check_if_request_user_answered_ranking(user, SocialFire.objects.all().values())
+        social_blast_fireball_status = check_if_request_user_answered_ranking(user,
+                                                                              SocialBlastFireBall.objects.all().values())
+        environmental_blast_wave_status = check_if_request_user_answered_ranking(user,
+                                                                                 EnvironmentalBlastShockWave.objects.all().values())
+        environmental_fire_status = check_if_request_user_answered_ranking(user,
+                                                                           EnvironmentalFire.objects.all().values())
+        environmental_blast_fireball_status = check_if_request_user_answered_ranking(user,
+                                                                                     EnvironmentalBlastFireBall.objects.all().values())
 
         any_column_is_ready = True if any(
             [all([economic_blast_wave_status, economic_fire_status, economic_blast_fireball_status]),
