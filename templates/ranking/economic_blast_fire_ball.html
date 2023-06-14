@@ -2,15 +2,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 
-  <title>Економічні наслідки вибуху із утворенням «вогняної кулі»</title>
+    <title>Економічні наслідки вибуху із утворенням «вогняної кулі»</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
     <link href="{% static "css/forms.css" %}" rel="stylesheet">
     <link href="{% static "css/form_number_control.css" %}" rel="stylesheet">
 </head>
@@ -18,101 +22,104 @@
 <body class="bg-light">
 
 <div class="container">
-  <div class="py-2 text">
-    <h5>Уявляючи сценарій надзвичайної ситуації, оцініть вагомість факторів від 1 (найменш вагоми) до 10 (найбільш вагомий) для відповідних наслідків, допустимі однакові значення</h5>
-    <hr class="mb-4">
-    <p><b>Група факторів:</b> Економічні наслідки</p>
-    <p><b>Сценарій надзвичайної ситуації:</b> Вибух нафтопродуктів із утворенням «вогняної кулі» <a href="https://docs.google.com/document/d/1tq07pMEo3SApHJi-C5BZ3YxwtSTkcKaN/edit?usp=sharing&ouid=103711757023069945542&rtpof=true&sd=true" target=”_blank”>(посилання на опис)</a></p>
-    <hr class="mb-4">
-  </div>
-  <form class="needs-validation" method="post" novalidate>
-      {% csrf_token %}
-      <table class="table table-striped">
-          <thead class="thead">
+    <div class="py-2 text">
+        <h5>Уявляючи сценарій надзвичайної ситуації, оцініть вагомість факторів від 1 (найменш вагоми) до 10 (найбільш
+            вагомий) для відповідних наслідків, допустимі однакові значення</h5>
+        <hr class="mb-4">
+        <p><b>Група факторів:</b> Економічні наслідки</p>
+        <p><b>Сценарій надзвичайної ситуації:</b> Вибух нафтопродуктів із утворенням «вогняної кулі» <a
+                href="https://docs.google.com/document/d/1tq07pMEo3SApHJi-C5BZ3YxwtSTkcKaN/edit?usp=sharing&ouid=103711757023069945542&rtpof=true&sd=true"
+                target=”_blank”>(посилання на опис)</a></p>
+        <hr class="mb-4">
+    </div>
+    <form class="needs-validation" method="post" novalidate>
+        {% csrf_token %}
+        <table class="table table-striped">
+            <thead class="thead">
             <tr>
                 <th scope="col" width="15%">Фактор</th>
                 <th scope="col" width="74%">Опис фактору</th>
                 <th scope="col">Ранг</th>
             </tr>
-          </thead>
-        <tbody>
-        <tr>
-          <th scope="row">Фактор Е1</th>
-          <td>Тип конструкції АЗС і використовуваного обладнання</td>
-          <td>{{form.E1}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е2</th>
-          <td>Число резервуарів, їх об’єм та тип</td>
-          <td>{{ form.E2 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е3</th>
-          <td>Наявність поряд із АЗС підприємств, що надають додаткові послуги автомобілістам: СТО, автомийок, магазинів, закладів громадського харчування</td>
-          <td>{{ form.E3 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е4</th>
-          <td>Наявність поряд із АЗС комунікацій комунального господарства: магістральні водо- і газопроводи, тепломережі, мережі зв’язку і лінії електропередач</td>
-          <td>{{ form.E4 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е5</th>
-          <td>Наявність поблизу АЗС підприємств-об’єктів підвищеної небезпеки</td>
-          <td>{{ form.E5 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е6</th>
-          <td>Наявність поблизу інших АЗС</td>
-          <td>{{ form.E6 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е7</th>
-          <td>Наявність поблизу АЗС житлової забудови</td>
-          <td>{{ form.E7 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е8</th>
-          <td>Наявність невиконаних приписів від контролюючих органів</td>
-          <td>{{ form.E8 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е9</th>
-          <td>Час експлуатації АЗС</td>
-          <td>{{ form.E9 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор Е10</th>
-          <td>Належність АЗС до торговельної марки (мережі)</td>
-          <td>{{ form.E10 }}</td>
-        </tr>
-        </tbody>
-      </table >
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Фактор Е1</th>
+                <td>Тип конструкції АЗС і використовуваного обладнання</td>
+                <td>{{ form.E1 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е2</th>
+                <td>Число резервуарів, їх об’єм та тип</td>
+                <td>{{ form.E2 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е3</th>
+                <td>Наявність поряд із АЗС підприємств, що надають додаткові послуги автомобілістам: СТО, автомийок,
+                    магазинів, закладів громадського харчування
+                </td>
+                <td>{{ form.E3 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е4</th>
+                <td>Наявність поряд із АЗС комунікацій комунального господарства: магістральні водо- і газопроводи,
+                    тепломережі, мережі зв’язку і лінії електропередач
+                </td>
+                <td>{{ form.E4 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е5</th>
+                <td>Наявність поблизу АЗС підприємств-об’єктів підвищеної небезпеки</td>
+                <td>{{ form.E5 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е6</th>
+                <td>Наявність поблизу інших АЗС</td>
+                <td>{{ form.E6 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е7</th>
+                <td>Наявність поблизу АЗС житлової забудови</td>
+                <td>{{ form.E7 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е8</th>
+                <td>Наявність невиконаних приписів від контролюючих органів</td>
+                <td>{{ form.E8 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е9</th>
+                <td>Час експлуатації АЗС</td>
+                <td>{{ form.E9 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор Е10</th>
+                <td>Належність АЗС до торговельної марки (мережі)</td>
+                <td>{{ form.E10 }}</td>
+            </tr>
+            </tbody>
+        </table>
         <div class="col-md-12 mb-3">
-          <label class="form-control-label" for="adding_factors">Чи необхідно, на вашу думку, додати якісь фактори?</label>
-            {{form.adding_factors}}
+            <label class="form-control-label" for="adding_factors">Чи необхідно, на вашу думку, додати якісь
+                фактори?</label>
+            {{ form.adding_factors }}
         </div>
         <div class="col-md-12 mb-3">
-          <label class="form-control-label" for="additional_comment">Ваш додатковий коментар.</label>
-            {{form.additional_comment}}
+            <label class="form-control-label" for="additional_comment">Ваш додатковий коментар.</label>
+            {{ form.additional_comment }}
         </div>
         <hr class="mb-4">
         <div class="text-center col-md-12">
-          <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Повернутися назад</a>
-          <button  class="btn btn-outline-success btn-block" type="submit">Надіслати</button>
+            <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Повернутися назад</a>
+            <button class="btn btn-outline-success btn-block" type="submit">Надіслати</button>
         </div>
-  </form>
+    </form>
 </div>
 <script src="{% static "js/input-cheking.js" %}"></script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/holder.min.js"></script>
-<script src="js/form-checkbox-required.js"></script>
+
 
 </body>
 </html>

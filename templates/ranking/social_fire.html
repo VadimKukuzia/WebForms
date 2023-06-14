@@ -2,15 +2,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 
-  <title>Соціальні наслідки пожежі проливу нафтопродуктів</title>
+    <title>Соціальні наслідки пожежі проливу нафтопродуктів</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
     <link href="{% static "css/forms.css" %}" rel="stylesheet">
     <link href="{% static "css/form_number_control.css" %}" rel="stylesheet">
 </head>
@@ -18,101 +22,103 @@
 <body class="bg-light">
 
 <div class="container">
-  <div class="py-2 text">
-    <h5>Уявляючи сценарій надзвичайної ситуації, оцініть вагомість факторів від 1 (найменш вагоми) до 10 (найбільш вагомий) для відповідних наслідків, допустимі однакові значення</h5>
-    <hr class="mb-4">
-    <p><b>Група факторів:</b> Соціальні наслідки</p>
-    <p><b>Сценарій надзвичайної ситуації:</b> Пожежа проливу нафтопродуктів <a href="https://docs.google.com/document/d/1lAtooMI97KvKVqGyZP0IVwpdsu1lfwew/edit?usp=sharing&ouid=103711757023069945542&rtpof=true&sd=true" target=”_blank”>(посилання на опис)</a></p>
-    <hr class="mb-4">
-  </div>
-  <form class="needs-validation" method="post" novalidate>
-      {% csrf_token %}
-      <table class="table table-striped">
-          <thead class="thead">
+    <div class="py-2 text">
+        <h5>Уявляючи сценарій надзвичайної ситуації, оцініть вагомість факторів від 1 (найменш вагоми) до 10 (найбільш
+            вагомий) для відповідних наслідків, допустимі однакові значення</h5>
+        <hr class="mb-4">
+        <p><b>Група факторів:</b> Соціальні наслідки</p>
+        <p><b>Сценарій надзвичайної ситуації:</b> Пожежа проливу нафтопродуктів <a
+                href="https://docs.google.com/document/d/1lAtooMI97KvKVqGyZP0IVwpdsu1lfwew/edit?usp=sharing&ouid=103711757023069945542&rtpof=true&sd=true"
+                target=”_blank”>(посилання на опис)</a></p>
+        <hr class="mb-4">
+    </div>
+    <form class="needs-validation" method="post" novalidate>
+        {% csrf_token %}
+        <table class="table table-striped">
+            <thead class="thead">
             <tr>
                 <th scope="col" width="15%">Фактор</th>
                 <th scope="col" width="74%">Опис фактору</th>
                 <th scope="col">Ранг</th>
             </tr>
-          </thead>
-        <tbody>
-        <tr>
-          <th scope="row">Фактор С1</th>
-          <td>Щільність населення в районі поблизу АЗС</td>
-          <td>{{form.S1}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С2</th>
-          <td>Характер зони, в якій перебуває АЗС: житлової забудови, промислова, сільськогосподарська, рекреаційна тощо</td>
-          <td>{{ form.S2 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С3</th>
-          <td>Наявність поблизу АЗС соціально важливої інфраструктури: стадіони, школи, лікарні і т.п.</td>
-          <td>{{ form.S3 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С4</th>
-          <td>Середній рівень доходів жителів району, у якому розміщена АЗС</td>
-          <td>{{ form.S4 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С5</th>
-          <td>Потенціал зростання провінції, де знаходиться АЗС</td>
-          <td>{{ form.S5 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С6</th>
-          <td>Наявність поблизу АЗС пам’яток культури</td>
-          <td>{{ form.S6 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С7</th>
-          <td>Знаходження в зоні бойових дій або близькість до цієї зони</td>
-          <td>{{ form.S7 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С8</th>
-          <td>Кваліфікація персоналу</td>
-          <td>{{ form.S8 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С9</th>
-          <td>АЗС як криміногенний фактор – наявність «тіньових» АЗС, на яких можуть не дотримуватись всі норми безпеки</td>
-          <td>{{ form.S9 }}</td>
-        </tr>
-        <tr>
-          <th scope="row">Фактор С10</th>
-          <td>Наслідки для ринку праці</td>
-          <td>{{ form.S10 }}</td>
-        </tr>
-        </tbody>
-      </table >
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Фактор С1</th>
+                <td>Щільність населення в районі поблизу АЗС</td>
+                <td>{{ form.S1 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С2</th>
+                <td>Характер зони, в якій перебуває АЗС: житлової забудови, промислова, сільськогосподарська,
+                    рекреаційна тощо
+                </td>
+                <td>{{ form.S2 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С3</th>
+                <td>Наявність поблизу АЗС соціально важливої інфраструктури: стадіони, школи, лікарні і т.п.</td>
+                <td>{{ form.S3 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С4</th>
+                <td>Середній рівень доходів жителів району, у якому розміщена АЗС</td>
+                <td>{{ form.S4 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С5</th>
+                <td>Потенціал зростання провінції, де знаходиться АЗС</td>
+                <td>{{ form.S5 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С6</th>
+                <td>Наявність поблизу АЗС пам’яток культури</td>
+                <td>{{ form.S6 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С7</th>
+                <td>Знаходження в зоні бойових дій або близькість до цієї зони</td>
+                <td>{{ form.S7 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С8</th>
+                <td>Кваліфікація персоналу</td>
+                <td>{{ form.S8 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С9</th>
+                <td>АЗС як криміногенний фактор – наявність «тіньових» АЗС, на яких можуть не дотримуватись всі норми
+                    безпеки
+                </td>
+                <td>{{ form.S9 }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Фактор С10</th>
+                <td>Наслідки для ринку праці</td>
+                <td>{{ form.S10 }}</td>
+            </tr>
+            </tbody>
+        </table>
         <div class="col-md-12 mb-3">
-          <label class="form-control-label" for="adding_factors">Чи необхідно, на вашу думку, додати якісь фактори?</label>
-            {{form.adding_factors}}
+            <label class="form-control-label" for="adding_factors">Чи необхідно, на вашу думку, додати якісь
+                фактори?</label>
+            {{ form.adding_factors }}
         </div>
         <div class="col-md-12 mb-3">
-          <label class="form-control-label" for="additional_comment">Ваш додатковий коментар.</label>
-            {{form.additional_comment}}
+            <label class="form-control-label" for="additional_comment">Ваш додатковий коментар.</label>
+            {{ form.additional_comment }}
         </div>
         <hr class="mb-4">
         <div class="text-center col-md-12">
-          <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Повернутися назад</a>
-          <button id='delete_row' class="btn btn-outline-success btn-block" type="submit">Надіслати</button>
+            <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Повернутися назад</a>
+            <button id='delete_row' class="btn btn-outline-success btn-block" type="submit">Надіслати</button>
         </div>
-  </form>
+    </form>
 </div>
 <script src="{% static "js/input-cheking.js" %}"></script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/holder.min.js"></script>
-<script src="js/form-checkbox-required.js"></script>
 
 </body>
 </html>
