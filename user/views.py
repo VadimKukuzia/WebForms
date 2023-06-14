@@ -12,7 +12,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.email[:user.email.index("@")]
+            user.username = user.email[:user.email.index("@")] + user.password[-10:]
             user.save()
             login(request, user)
             return redirect('ranking')

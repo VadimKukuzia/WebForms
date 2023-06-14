@@ -21,21 +21,7 @@ class UserManager(BaseUserManager):
             raise TypeError('Password should not be none')
 
         user = self.create_user(username, email, password)
-        user.age = 1
-        user.sex = 'M'
-        user.age = 1
-        user.income = 1
-        user.marital_status = 1
-        user.children_status = 1
-        user.education = 1
-        user.degree = 1
-        user.driving_experience = 1
-        user.working_organization = 1
-        user.district = 1
-        user.petrol_station_nearby = 1
-        user.dwelling = 1
-        user.is_superuser = True
-        user.is_staff = True
+
         user.save()
         return user
 
@@ -44,23 +30,23 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
     name = models.CharField(max_length=255, unique=False)
 
-    sex = models.CharField()
-    age = models.IntegerField()
-    income = models.IntegerField()
-    marital_status = models.IntegerField()
-    children_status = models.IntegerField()
-    education = models.IntegerField()
-    degree = models.IntegerField()
-    driving_experience = models.IntegerField()
+    sex = models.CharField(default='M')
+    age = models.IntegerField(default=1)
+    income = models.IntegerField(default=1)
+    marital_status = models.IntegerField(default=1)
+    children_status = models.IntegerField(default=1)
+    education = models.IntegerField(default=1)
+    degree = models.IntegerField(default=1)
+    driving_experience = models.IntegerField(default=1)
     # education_direction = ?
     technical_education_direction = models.BooleanField(default=False)
     economical_education_direction = models.BooleanField(default=False)
     environmental_education_direction = models.BooleanField(default=False)
     humanitarian_education_direction = models.BooleanField(default=False)
-    working_organization = models.IntegerField()
-    district = models.IntegerField()
-    petrol_station_nearby = models.IntegerField()
-    dwelling = models.IntegerField()
+    working_organization = models.IntegerField(default=1)
+    district = models.IntegerField(default=1)
+    petrol_station_nearby = models.IntegerField(default=1)
+    dwelling = models.IntegerField(default=1)
 
     email = models.EmailField(max_length=100, unique=True, db_index=True)
     is_verified = models.BooleanField(default=False)
