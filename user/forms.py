@@ -78,7 +78,7 @@ class MyRadioSelect(django.forms.RadioSelect):
 
 
 class UserRegisterForm(UserCreationForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'id': "Name"}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'id': "Name", 'placeholder': 'Ваша відповідь'}))
     sex = forms.CharField(label="Стать", widget=MyRadioSelect(choices=sex_choices,
                                                               attrs={'class': 'custom-control-input',
                                                                      'name': 'sex'}))
@@ -148,7 +148,7 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email для зворотнього зв'язку", max_length=254,
                              help_text='Required. Enter the valid email.',
                              required=True,
-                             widget=forms.TextInput(attrs={'type': "email", 'class': "form-control", 'id': "email"}))
+                             widget=forms.TextInput(attrs={'type': "email", 'class': "form-control", 'id': "email", 'placeholder': 'Ваша відповідь'}))
 
     class Meta:
         model = User
