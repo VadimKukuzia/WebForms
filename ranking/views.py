@@ -3,7 +3,11 @@ from django.shortcuts import render, redirect
 from django.views.decorators.cache import never_cache
 
 from .forms import *
-from .utils import check_if_request_user_answered_ranking
+
+
+def check_if_request_user_answered_ranking(request_user, ranking):
+    return ranking.filter(author_id=request_user).exists()
+
 
 # Create your views here.
 @login_required(login_url='register')
@@ -36,7 +40,7 @@ def index(request):
             [all([economic_blast_wave_status, economic_fire_status, economic_blast_fireball_status]),
              all([social_blast_wave_status, social_fire_status, social_blast_fireball_status]),
              all([environmental_blast_fireball_status, environmental_fire_status,
-                 environmental_blast_wave_status])]) else False
+                  environmental_blast_wave_status])]) else False
 
         context = {
             'economic_blast_wave_status': economic_blast_wave_status,
