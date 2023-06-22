@@ -1,5 +1,7 @@
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.decorators.cache import never_cache
 from django.views.generic import CreateView
 
 from user.forms import UserRegisterForm
@@ -11,6 +13,7 @@ def start_page(request):
     return render(request, 'user/info_page.html')
 
 
+@never_cache
 def register(request):
     if request.user.is_authenticated:
         return redirect('update-user')
@@ -23,7 +26,6 @@ def register(request):
             login(request, user)
             return redirect('ranking')
         else:
-            print(form.errors)
             if form.has_error('email') or form.has_error('username'):
                 return render(request, 'user/already_done_view.html')
 
@@ -32,6 +34,7 @@ def register(request):
     return render(request, 'user/index.html', {'form': form})
 
 
+@login_required(login_url='start-page')
 def update(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST, instance=request.user)

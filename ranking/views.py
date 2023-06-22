@@ -10,7 +10,7 @@ def check_if_request_user_answered_ranking(request_user, ranking):
 
 
 # Create your views here.
-@login_required(login_url='register')
+@login_required(login_url='start-page')
 @never_cache
 def index(request):
     if not request.user.is_authenticated:
@@ -323,6 +323,7 @@ def update_environmental_blast_fireball(request):
     return render(request, 'ranking/environmental_blast_fire_ball.html', {'form': form})
 
 
+@login_required(login_url='start-page')
 def economic_ranking(request):
     if request.method == 'POST':
         form_blast_wave = EconomicBlastShockWaveForm(request.POST)
@@ -351,6 +352,7 @@ def economic_ranking(request):
                   {'form_blast_wave': form_blast_wave, 'form_fire': form_fire, 'form_fire_ball': form_fire_ball})
 
 
+@login_required(login_url='start-page')
 def update_economic_ranking(request):
     blast_wave_ranking = EconomicBlastShockWave.objects.filter(author=request.user).first()
     fire_ranking = EconomicFire.objects.filter(author=request.user).first()
@@ -375,6 +377,7 @@ def update_economic_ranking(request):
                   {'form_blast_wave': form_blast_wave, 'form_fire': form_fire, 'form_fire_ball': form_fire_ball})
 
 
+@login_required(login_url='start-page')
 def social_ranking(request):
     if request.method == 'POST':
         form_blast_wave = SocialBlastShockWaveForm(request.POST)
@@ -403,6 +406,7 @@ def social_ranking(request):
                   {'form_blast_wave': form_blast_wave, 'form_fire': form_fire, 'form_fire_ball': form_fire_ball})
 
 
+@login_required(login_url='start-page')
 def update_social_ranking(request):
     blast_wave_ranking = SocialBlastShockWave.objects.all().filter(author=request.user).first()
     fire_ranking = SocialFire.objects.all().filter(author=request.user).first()
@@ -427,6 +431,7 @@ def update_social_ranking(request):
                   {'form_blast_wave': form_blast_wave, 'form_fire': form_fire, 'form_fire_ball': form_fire_ball})
 
 
+@login_required(login_url='start-page')
 def environmental_ranking(request):
     if request.method == 'POST':
         form_blast_wave = EnvironmentalBlastShockWaveForm(request.POST)
@@ -456,8 +461,8 @@ def environmental_ranking(request):
                   {'form_blast_wave': form_blast_wave, 'form_fire': form_fire, 'form_fire_ball': form_fire_ball})
 
 
+@login_required(login_url='start-page')
 def update_environmental_ranking(request):
-
     blast_wave_ranking = EnvironmentalBlastShockWave.objects.all().filter(author=request.user).first()
     fire_ranking = EnvironmentalFire.objects.all().filter(author=request.user).first()
     blast_fire_ball_ranking = EnvironmentalBlastFireBall.objects.all().filter(author=request.user).first()
