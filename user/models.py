@@ -44,10 +44,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     economical_education_direction = models.BooleanField(default=False)
     environmental_education_direction = models.BooleanField(default=False)
     humanitarian_education_direction = models.BooleanField(default=False)
-    working_organization = models.IntegerField(default=1)
-    district = models.IntegerField(default=1)
-    petrol_station_nearby = models.IntegerField(default=1)
-    dwelling = models.IntegerField(default=1)
+    work_risk = models.IntegerField(default=1)
+    station_nearby_work = models.IntegerField(default=1)
+    station_nearby_house = models.IntegerField(default=1)
 
     email = models.EmailField(max_length=100, unique=True, db_index=True)
     is_verified = models.BooleanField(default=False)

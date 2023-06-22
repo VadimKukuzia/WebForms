@@ -1,0 +1,172 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+    <title>Екологічні наслідки</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+    <link href="{% static "css/forms.css" %}" rel="stylesheet">
+    <link href="{% static "css/form_number_control.css" %}" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-3">
+    <div class="py-2 text">
+        <h5>Уявляючи сценарій надзвичайної ситуації, оцініть вагомість факторів від 1 (найменш вагомий) до 10 (найбільш
+            вагомий) для відповідних наслідків, допустимі однакові значення</h5>
+        <hr class="mb-4">
+        <p><b>Група факторів:</b> Екологічні наслідки, тобто - шкода для природи довкілля, завдана надзвичайною ситуацією</p>
+        <p>Короткий опис сценаріїв наявний та відображається при наведенні на відповідну іконку <i class="icon-info-sign"></i> біля кожного з сценаріїв відповідно.</p>
+        <p>Більше інформації щодо сценаріїв можна переглянути за наступними посиланнями:
+            <ul>
+                <li><b>Сценарій надзвичайної ситуації 1:</b> Вибух нафтопродуктів із утворенням ударної хвилі <a
+                href="https://drive.google.com/file/d/1bjROilXKePr99mNCtInOlp6eVdcYDYOz/view?usp=drive_link"
+                target=”_blank”>(посилання на опис)</a></li>
+                <li><b>Сценарій надзвичайної ситуації 2:</b> Пожежа проливу нафтопродуктів <a
+                href="https://drive.google.com/file/d/1ui8Je8OzsLKz3wdbCg4B2jC4D0Wfo_g5/view?usp=drive_link"
+                target=”_blank”>(посилання на опис)</a></li>
+                <li><b>Сценарій надзвичайної ситуації 3:</b> Вибух нафтопродуктів із утворенням «вогняної кулі» <a
+                href="https://drive.google.com/file/d/1lb8AcaTZ1mmc7o-UVvfObOXsY7DoctFP/view?usp=drive_link"
+                target=”_blank”>(посилання на опис)</a></li>
+            </ul>
+        </p>
+        <p>Уявляючи сценарії надзвичайної ситуації, як на Ваш погляд впливають представлені фактори на наслідки:</p>
+        <hr class="mb-4">
+    </div>
+    <form class="needs-validation" method="post" novalidate>
+        {% csrf_token %}
+        <table class="table table-striped">
+            <thead class="thead">
+            <tr>
+                <th scope="col" width="61%">Опис фактору</th>
+                <th scope="col">Сценарій 1
+                    <i class="icon-info-sign" data-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover"
+                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Вибух із утворенням ударної хвилі</h5><p>Основними вражаючими факторами  є:</p><ul><li>ударна хвиля;</li><li>уламки зруйнованого обладнання, обвалення будівель і конструкцій.</li></ul><img src="{% static 'images/wave_blast.png' %}" class="img-fluid" alt="blast-wave"></div></div>'></i>
+                </th>
+                <th scope="col">Сценарій 2
+                    <i class="icon-info-sign" data-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover"
+                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Пожежа проливу нафтопродуктів</h5><p>Основними вражаючими факторами  є:</p><ul><li>теплове випромінювання та гарячі продукти горіння;</li><li>відкрите полум’я та палаючі нафтопродукти.</li><li>токсичні продукти горіння.</li></ul><img src="{% static 'images/fire.png' %}" class="img-fluid" alt="fire"></div></div>'></i>
+                </th>
+                <th scope="col">Сценарій 3
+                    <i class="icon-info-sign" data-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover"
+                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Вибух із утворенням «Вогняної кулі»</h5><p>Основними вражаючими факторами є:</p><ul><li>теплове випромінювання та гарячі продукти горіння;</li><li>відкрите полум’я та палаючі нафтопродукти.</li></ul><img src="{% static 'images/fire_ball.png' %}" class="img-fluid" alt="fire-ball"></div></div>'></i>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Тип використовуваного палива, стандарт</td>
+                <td>{{ form_blast_wave.Env_blast_wave1 }}</td>
+                <td>{{ form_fire.Env_fire1 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball1 }}</td>
+            </tr>
+            <tr>
+                <td>Погодні умови (температура, швидкість вітру, ступінь вертикальної стійкості повітря (інверсія,
+                    конвекція, ізотермія))
+                </td>
+                <td>{{ form_blast_wave.Env_blast_wave2 }}</td>
+                <td>{{ form_fire.Env_fire2 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball2 }}</td>
+            </tr>
+            <tr>
+                <td>Пора року</td>
+                <td>{{ form_blast_wave.Env_blast_wave3 }}</td>
+                <td>{{ form_fire.Env_fire3 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball3 }}</td>
+            </tr>
+            <tr>
+                <td>Наявність поблизу АЗС відкритих водойм, що мають господарське значення</td>
+                <td>{{ form_blast_wave.Env_blast_wave4 }}</td>
+                <td>{{ form_fire.Env_fire4 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball4 }}</td>
+            </tr>
+            <tr>
+                <td>Тип та структура ґрунтів</td>
+                <td>{{ form_blast_wave.Env_blast_wave5 }}</td>
+                <td>{{ form_fire.Env_fire5 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball5 }}</td>
+            </tr>
+            <tr>
+                <td>Глибина залягання ґрунтових вод, наявність поблизу колодязів, свердловин</td>
+                <td>{{ form_blast_wave.Env_blast_wave6 }}</td>
+                <td>{{ form_fire.Env_fire6 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball6 }}</td>
+            </tr>
+            <tr>
+                <td>Наявність поблизу АЗС ділянок природно-заповідного фонду</td>
+                <td>{{ form_blast_wave.Env_blast_wave7 }}</td>
+                <td>{{ form_fire.Env_fire7 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball7 }}</td>
+            </tr>
+            <tr>
+                <td>Наявність поблизу АЗС значних лісових масивів</td>
+                <td>{{ form_blast_wave.Env_blast_wave8 }}</td>
+                <td>{{ form_fire.Env_fire8 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball8 }}</td>
+            </tr>
+            <tr>
+                <td>Наявність поблизу АЗС земель сільськогосподарського значення (орних земель, пасовищ тощо)</td>
+                <td>{{ form_blast_wave.Env_blast_wave9 }}</td>
+                <td>{{ form_fire.Env_fire9 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball9 }}</td>
+            </tr>
+            <tr>
+                <td>Характер рельєфу біля АЗС</td>
+                <td>{{ form_blast_wave.Env_blast_wave10 }}</td>
+                <td>{{ form_fire.Env_fire10 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball10 }}</td>
+            </tr>
+            <tr>
+                <td>Наявність поблизу АЗС рекреаційних зон (як великих, там і малих)</td>
+                <td>{{ form_blast_wave.Env_blast_wave11 }}</td>
+                <td>{{ form_fire.Env_fire11 }}</td>
+                <td>{{ form_fire_ball.Env_fire_ball11 }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-md-12 mb-3">
+            <label class="form-control-label" for="adding_factors">Чи необхідно, на вашу думку, додати якісь
+                фактори?</label>
+            {{ form_blast_wave.adding_factors }}
+        </div>
+        <div class="col-md-12 mb-3">
+            <label class="form-control-label" for="additional_comment">Ваш додатковий коментар.</label>
+            {{ form_blast_wave.additional_comment }}
+        </div>
+        <hr class="mb-4">
+        <div class="text-center col-md-12">
+            <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Повернутися назад</a>
+            <button id='delete_row' class="btn btn-outline-success btn-block" type="submit">Надіслати</button>
+        </div>
+    </form>
+</div>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover({
+            placement : 'bottom',
+            trigger : 'hover',
+            html : true
+        });
+    });
+</script>
+<script src="{% static "js/input-cheking.js" %}"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+</body>
+</html>

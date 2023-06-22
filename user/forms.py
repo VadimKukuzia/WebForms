@@ -35,10 +35,8 @@ education_choices = (
     (4, 'Повна вища')
 )
 degree_choices = (
-    ('', 'Обрати...'),
-    (1, 'Немає'),
-    (2, "Кандидат наук(доктор філософії)"),
-    (3, 'Доктор наук'),
+    (1, 'Є'),
+    (0, 'Немає')
 )
 driving_experience_choices = (
     ('', 'Обрати...'),
@@ -71,6 +69,18 @@ dwelling_choices = (
     (1, 'Часний будинок'),
     (2, 'Квартира'),
 )
+work_risk_choices = (
+    (1, 'Так'),
+    (0, 'Ні')
+)
+station_nearby_work_choices = (
+    (1, 'Так'),
+    (0, 'Ні')
+)
+station_nearby_house_choices = (
+    (1, 'Так'),
+    (0, 'Ні')
+)
 
 
 class MyRadioSelect(django.forms.RadioSelect):
@@ -78,7 +88,8 @@ class MyRadioSelect(django.forms.RadioSelect):
 
 
 class UserRegisterForm(UserCreationForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={'type': "text", 'class': "form-control", 'id': "Name", 'placeholder': 'Ваша відповідь'}))
+    name = forms.CharField(widget=forms.TextInput(
+        attrs={'type': "text", 'class': "form-control", 'id': "Name", 'placeholder': 'Ваша відповідь'}))
     sex = forms.CharField(label="Стать", widget=MyRadioSelect(choices=sex_choices,
                                                               attrs={'class': 'custom-control-input',
                                                                      'name': 'sex'}))
@@ -101,10 +112,10 @@ class UserRegisterForm(UserCreationForm):
     education = forms.IntegerField(label="Освіта", widget=forms.Select(choices=education_choices,
                                                                        attrs={'class': 'custom-select d-block w-100',
                                                                               'id': 'education'}))
-    degree = forms.IntegerField(label="Науковий ступінь", widget=forms.Select(choices=degree_choices,
+    degree = forms.IntegerField(label="Науковий ступінь", widget=MyRadioSelect(choices=degree_choices,
                                                                               attrs={
-                                                                                  'class': 'custom-select d-block w-100',
-                                                                                  'id': 'degree'}))
+                                                                                  'class': 'custom-control-input',
+                                                                                  'name': 'degree'}))
     driving_experience = forms.IntegerField(label="Досвід користування автомобілем",
                                             widget=forms.Select(choices=driving_experience_choices,
                                                                 attrs={'class': 'custom-select d-block w-100',
@@ -128,34 +139,35 @@ class UserRegisterForm(UserCreationForm):
                                                               attrs={'class': 'custom-control-input',
                                                                      'id': 'humanitarian',
                                                                      'name': 'education_direction'}))
-
-    working_organization = forms.IntegerField(label="Організація, в якій працюєте",
-                                              widget=forms.Select(choices=working_organization_choices,
-                                                                attrs={'class': 'custom-select d-block w-100',
-                                                                       'id': 'working_organization'}))
-    district = forms.IntegerField(label="Район розташування", widget=forms.Select(choices=district_choices,
-                                                                attrs={'class': 'custom-select d-block w-100',
-                                                                       'id': 'district'}))
-    petrol_station_nearby = forms.IntegerField(label="Чи розташовано поблизу АЗС?",
-                                               widget=MyRadioSelect(choices=petrol_station_nearby_choices, attrs={
-                                                                                           'class': 'custom-control-input',
-                                                                                           'name': 'petrol_station_nearby'}))
-
-    dwelling = forms.IntegerField(label="Житло", widget=forms.Select(choices=dwelling_choices,
-                                                                attrs={'class': 'custom-select d-block w-100',
-                                                                       'id': 'dwelling'}))
+    work_risk = forms.IntegerField(
+        label="Чи пов’язана ваша проф. діяльність з ризиком, або його оцінкою чи управлінням?",
+        widget=MyRadioSelect(choices=work_risk_choices,
+                            attrs={
+                                'class': 'custom-control-input',
+                                'name': 'work_risk'}))
+    station_nearby_work = forms.IntegerField(label="Чи розташовано АЗС поблизу місця Вашої роботи?",
+                                             widget=MyRadioSelect(choices=station_nearby_work_choices,
+                                                                 attrs={
+                                                                     'class': 'custom-control-input',
+                                                                     'name': 'station_nearby_work'}))
+    station_nearby_house = forms.IntegerField(label="Чи розташовано АЗС поблизу місця Вашого житла?",
+                                              widget=MyRadioSelect(choices=station_nearby_house_choices,
+                                                                  attrs={
+                                                                      'class': 'custom-control-input',
+                                                                      'name': 'station_nearby_house'}))
 
     email = forms.EmailField(label="Email для зворотнього зв'язку", max_length=254,
                              help_text='Required. Enter the valid email.',
                              required=True,
-                             widget=forms.TextInput(attrs={'type': "email", 'class': "form-control", 'id': "email", 'placeholder': 'Ваша відповідь'}))
+                             widget=forms.TextInput(attrs={'type': "email", 'class': "form-control", 'id': "email",
+                                                           'placeholder': 'Ваша відповідь'}))
 
     class Meta:
         model = User
         fields = ('name', 'sex', 'age', 'income', 'marital_status', 'children_status', 'education', 'degree',
                   'driving_experience', 'technical_education_direction', 'economical_education_direction',
-                  'environmental_education_direction', 'humanitarian_education_direction', 'working_organization',
-                  'district', 'petrol_station_nearby', 'dwelling', 'email')
+                  'environmental_education_direction', 'humanitarian_education_direction', 'work_risk',
+                  'station_nearby_work', 'station_nearby_house', 'email')
         widgets = {'boolfield': 'marital_status'}
 
     def __init__(self, *args, **kwargs):

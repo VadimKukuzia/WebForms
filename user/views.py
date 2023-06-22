@@ -7,7 +7,13 @@ from user.forms import UserRegisterForm
 
 # Create your views here.
 
+def start_page(request):
+    return render(request, 'user/info_page.html')
+
+
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('update-user')
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -30,13 +36,10 @@ def update(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST, instance=request.user)
         if form.is_valid():
-            print("vadid")
             user = form.save()
             login(request, user)
             return redirect('ranking')
         else:
-            print(form.errors)
-            print("not")
             if form.has_error('email'):
                 return render(request, 'user/index.html')
 

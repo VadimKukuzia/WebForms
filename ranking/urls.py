@@ -14,6 +14,9 @@ urlpatterns = [
     path('economic_blast_fireball', views.economic_blast_fireball, name='economic-blast-fireball'),
     path('update_economic_blast_fireball', views.update_economic_blast_fireball, name='update-economic-blast-fireball'),
 
+    path('economic_ranking', views.economic_ranking, name='economic-ranking'),
+    path('update_economic_ranking', views.update_economic_ranking, name='update-economic-ranking'),
+
     # Social
     path('social_blast_wave', views.social_blast_wave, name='social-blast-wave'),
     path('update_social_blast_wave', views.update_social_blast_wave, name='update-social-blast-wave'),
@@ -24,6 +27,9 @@ urlpatterns = [
     path('social_blast_fireball', views.social_blast_fireball, name='social-blast-fireball'),
     path('update_social_blast_fireball', views.update_social_blast_fireball, name='update-social-blast-fireball'),
 
+    path('social_ranking', views.social_ranking, name='social-ranking'),
+    path('update_ranking', views.update_social_ranking, name='update-social-ranking'),
+
     # Environmental
     path('environmental_blast_wave', views.environmental_blast_wave, name='environmental-blast-wave'),
     path('update_environmental_blast_wave', views.update_environmental_blast_wave, name='update-environmental-blast-wave'),
@@ -33,5 +39,8 @@ urlpatterns = [
 
     path('environmental_blast_fireball', views.environmental_blast_fireball, name='environmental-blast-fireball'),
     path('update_environmental_blast_fireball', views.update_environmental_blast_fireball, name='update-environmental-blast-fireball'),
+
+    path('environmental_ranking', views.environmental_ranking, name='environmental-ranking'),
+    path('update_environmental_ranking', views.update_environmental_ranking, name='update-environmental-ranking'),
 
 ]
