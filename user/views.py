@@ -44,7 +44,7 @@ def update(request):
             return redirect('ranking')
         else:
             if form.has_error('email'):
-                return render(request, 'user/index.html')
+                return render(request, 'user/already_done_view.html')
 
     else:
         form = UserRegisterForm(instance=request.user)
