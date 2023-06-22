@@ -35,6 +35,7 @@ def register(request):
 
 
 @login_required(login_url='start-page')
+@never_cache
 def update(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST, instance=request.user)
