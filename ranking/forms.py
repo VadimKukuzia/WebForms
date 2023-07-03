@@ -15,10 +15,10 @@ class EconomicBlastShockWaveForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '10'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 class EconomicFireForm(forms.ModelForm):
@@ -33,10 +33,10 @@ class EconomicFireForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '10'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 class EconomicBlastFireBallForm(forms.ModelForm):
@@ -51,10 +51,10 @@ class EconomicBlastFireBallForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '10'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 # Social
@@ -71,10 +71,10 @@ class SocialBlastShockWaveForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '10'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 class SocialFireForm(forms.ModelForm):
@@ -89,10 +89,10 @@ class SocialFireForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '10'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 class SocialBlastFireBallForm(forms.ModelForm):
@@ -107,10 +107,10 @@ class SocialBlastFireBallForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '10'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 # Environmental
@@ -126,10 +126,10 @@ class EnvironmentalBlastShockWaveForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '11'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 class EnvironmentalFireForm(forms.ModelForm):
@@ -144,10 +144,10 @@ class EnvironmentalFireForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '11'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})
 
 
 class EnvironmentalBlastFireBallForm(forms.ModelForm):
@@ -162,7 +162,7 @@ class EnvironmentalBlastFireBallForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"class": "form-control form-control-sm", 'min': "1", 'max': '11'})
         self.fields['adding_factors'].required = False
         self.fields['adding_factors'].widget.attrs.update(
-            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "adding_factors", 'rows': '1', 'placeholder': 'Optional input'})
         self.fields['additional_comment'].required = False
         self.fields['additional_comment'].widget.attrs.update(
-            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Не є обов\'язковим'})
+            {"class": "form-control", 'id': "additional_comment", 'rows': '1', 'placeholder': 'Optional input'})

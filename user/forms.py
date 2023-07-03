@@ -4,82 +4,82 @@ from .models import User
 from django.contrib.auth.forms import UserCreationForm
 
 sex_choices = (
-    ('M', 'Чоловіча'),
-    ('F', 'Жіноча')
+    ('M', 'Male'),
+    ('F', 'Female')
 )
 age_choices = (
-    ('', 'Обрати...'),
+    ('', 'Choose...'),
     (1, '18-35'),
     (2, '35-60'),
     (3, '60+')
 )
 income_choices = (
-    ('', 'Обрати...'),
-    (1, 'Маленький'),
-    (2, 'Середній'),
-    (3, 'Великий')
+    ('', 'Choose...'),
+    (1, 'Small'),
+    (2, 'Medium'),
+    (3, 'Large')
 )
 marital_status_choices = (
-    (1, 'Одружений'),
-    (0, 'Неодружений')
+    (1, 'Married'),
+    (0, 'Single')
 )
 children_status_choices = (
-    (1, 'Є діти'),
-    (0, 'Нема дітей')
+    (1, 'I have children'),
+    (0, 'I have no children')
 )
 education_choices = (
-    ('', 'Обрати...'),
-    (1, 'Повна середня'),
-    (2, 'Професійно-технічна'),
-    (3, 'Базова вища'),
-    (4, 'Повна вища')
+    ('', 'Choose...'),
+    (1, 'Complete secondary'),
+    (2, 'Vocational'),
+    (3, 'Basic higher'),
+    (4, 'Complete higher')
 )
 degree_choices = (
-    (1, 'Є'),
-    (0, 'Немає')
+    (1, 'Yes'),
+    (0, 'No')
 )
 driving_experience_choices = (
-    ('', 'Обрати...'),
-    (1, 'Немає'),
-    (2, 'Менше 1 року'),
-    (3, '1-2 роки'),
-    (4, '3-4 роки'),
-    (5, '5-10 років'),
-    (6, '10+ років'),
+    ('', 'Choose...'),
+    (1, 'None'),
+    (2, 'Less than 1 year'),
+    (3, '1-2 years'),
+    (4, '3-4 years'),
+    (5, '5-10 years'),
+    (6, '10+ years'),
 )
 working_organization_choices = (
-    ('', 'Обрати...'),
-    (1, 'Бюджетна'),
-    (2, "Комерційна"),
-    (3, 'Не працюю/студент'),
+    ('', 'Choose...'),
+    (1, 'Budget'),
+    (2, 'Commercial'),
+    (3, 'Not working/student'),
 )
 district_choices = (
-    ('', 'Обрати...'),
+    ('', 'Choose...'),
     (1, 'Малиновський'),
     (2, 'Приморський'),
     (3, 'Київський'),
     (4, 'Суворовський')
 )
 petrol_station_nearby_choices = (
-    (1, 'Так'),
-    (0, 'Ні')
+    (1, 'Yes'),
+    (0, 'No')
 )
 dwelling_choices = (
-    ('', 'Обрати...'),
-    (1, 'Часний будинок'),
-    (2, 'Квартира'),
+    ('', 'Choose...'),
+    (1, 'Private house'),
+    (2, 'Flat'),
 )
 work_risk_choices = (
-    (1, 'Так'),
-    (0, 'Ні')
+    (1, 'Yes'),
+    (0, 'No')
 )
 station_nearby_work_choices = (
-    (1, 'Так'),
-    (0, 'Ні')
+    (1, 'Yes'),
+    (0, 'No')
 )
 station_nearby_house_choices = (
-    (1, 'Так'),
-    (0, 'Ні')
+    (1, 'Yes'),
+    (0, 'No')
 )
 
 
@@ -89,7 +89,7 @@ class MyRadioSelect(django.forms.RadioSelect):
 
 class UserRegisterForm(UserCreationForm):
     name = forms.CharField(widget=forms.TextInput(
-        attrs={'type': "text", 'class': "form-control", 'id': "Name", 'placeholder': 'Ваша відповідь'}))
+        attrs={'type': "text", 'class': "form-control", 'id': "Name", 'placeholder': 'Your answer'}))
     sex = forms.CharField(label="Стать", widget=MyRadioSelect(choices=sex_choices,
                                                               attrs={'class': 'custom-control-input',
                                                                      'name': 'sex'}))
@@ -121,20 +121,20 @@ class UserRegisterForm(UserCreationForm):
                                                                 attrs={'class': 'custom-select d-block w-100',
                                                                        'id': 'driving_experience'}))
 
-    technical_education_direction = forms.BooleanField(label="Технічна", required=False,
+    technical_education_direction = forms.BooleanField(label="Technical", required=False,
                                                        widget=forms.CheckboxInput(
                                                            attrs={'class': 'custom-control-input', 'id': 'technical',
                                                                   'name': 'education_direction'}))
-    economical_education_direction = forms.BooleanField(label="Економічна", required=False,
+    economical_education_direction = forms.BooleanField(label="Economic", required=False,
                                                         widget=forms.CheckboxInput(
                                                             attrs={'class': 'custom-control-input', 'id': 'economical',
                                                                    'name': 'education_direction'}))
-    environmental_education_direction = forms.BooleanField(label="Екологічна", required=False,
+    environmental_education_direction = forms.BooleanField(label="Environmental", required=False,
                                                            widget=forms.CheckboxInput(
                                                                attrs={'class': 'custom-control-input',
                                                                       'id': 'environmental',
                                                                       'name': 'education_direction'}))
-    humanitarian_education_direction = forms.BooleanField(label="Гуманітарна", required=False,
+    humanitarian_education_direction = forms.BooleanField(label="Humanitarian", required=False,
                                                           widget=forms.CheckboxInput(
                                                               attrs={'class': 'custom-control-input',
                                                                      'id': 'humanitarian',
@@ -160,7 +160,7 @@ class UserRegisterForm(UserCreationForm):
                              help_text='Required. Enter the valid email.',
                              required=True,
                              widget=forms.TextInput(attrs={'type': "email", 'class': "form-control", 'id': "email",
-                                                           'placeholder': 'Ваша відповідь'}))
+                                                           'placeholder': 'Your answer'}))
 
     class Meta:
         model = User

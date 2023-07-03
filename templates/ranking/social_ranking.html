@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 
-    <title>Соціальні наслідки</title>
+    <title>Social consequences ranking</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -25,25 +25,24 @@
 
 <div class="container mt-3">
     <div class="py-2 text">
-        <h5>Уявляючи сценарій надзвичайної ситуації, оцініть вагомість факторів від 1 (найменш вагомий) до 10 (найбільш
-            вагомий) для відповідних наслідків, допустимі однакові значення</h5>
+        <h5>Imagining an emergency scenario, rate the importance of the factors from 1 (least important) to 10 (most important) for the corresponding consequences, the same values are allowed</h5></h5>
         <hr class="mb-4">
-        <p><b>Група факторів:</b> Соціальні наслідки, тобто - шкода для суспільства, завдана надзвичайною ситуацією</p>
-        <p>Короткий опис сценаріїв наявний та відображається при наведенні на відповідну іконку <i class="icon-info-sign"></i> біля кожного з сценаріїв відповідно.</p>
-        <p>Більше інформації щодо сценаріїв можна переглянути за наступними посиланнями:
+        <p><b>Group of factors:</b> Social consequences - damage to society caused by an emergency situation</p>
+        <p>A brief description of the scenarios is available and can be displayed by hovering over the corresponding icon <i class="icon-info-sign"></i> next to each of the scenarios accordingly.</p>
+        <p>More information about the scenarios can be viewed at the following links:
             <ul>
-                <li><b>Сценарій надзвичайної ситуації 1:</b> Вибух нафтопродуктів із утворенням ударної хвилі <a
+                <li><b>Emergency scenario 1:</b> Explosion of oil products with the formation of a shock wave <a
                 href="https://drive.google.com/file/d/1bjROilXKePr99mNCtInOlp6eVdcYDYOz/view?usp=drive_link"
-                target=”_blank”>(посилання на опис)</a></li>
-                <li><b>Сценарій надзвичайної ситуації 2:</b> Пожежа проливу нафтопродуктів <a
+                target=”_blank”>(link to description)</a></li>
+                <li><b>Emergency scenario 2:</b> Oil products spill burning <a
                 href="https://drive.google.com/file/d/1ui8Je8OzsLKz3wdbCg4B2jC4D0Wfo_g5/view?usp=drive_link"
-                target=”_blank”>(посилання на опис)</a></li>
-                <li><b>Сценарій надзвичайної ситуації 3:</b> Вибух нафтопродуктів із утворенням «вогняної кулі» <a
+                target=”_blank”>(link to description)</a></li>
+                <li><b>Emergency scenario 3:</b> Explosion of oil products with the formation of «Fireball» <a
                 href="https://drive.google.com/file/d/1lb8AcaTZ1mmc7o-UVvfObOXsY7DoctFP/view?usp=drive_link"
-                target=”_blank”>(посилання на опис)</a></li>
+                target=”_blank”>(link to description)</a></li>
             </ul>
         </p>
-        <p>Уявляючи сценарії надзвичайної ситуації, як на Ваш погляд впливають представлені фактори на наслідки:</p>
+        <p>Imagining the scenarios of an emergency situation, how do you think the presented factors affect the consequences:</p>
         <hr class="mb-4">
     </div>
     <form class="needs-validation" method="post" novalidate>
@@ -51,82 +50,80 @@
         <table class="table table-striped">
             <thead class="thead">
             <tr>
-                <th scope="col" width="61%">Опис фактору</th>
-                <th scope="col">Сценарій 1
+                <th scope="col" width="61%">Description of the factor</th>
+                <th scope="col">Scenario 1
                     <i class="icon-info-sign" data-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover"
-                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Вибух із утворенням ударної хвилі</h5><p>Основними вражаючими факторами  є:</p><ul><li>ударна хвиля;</li><li>уламки зруйнованого обладнання, обвалення будівель і конструкцій.</li></ul><img src="{% static 'images/wave_blast.png' %}" class="img-fluid" alt="blast-wave"></div></div>'></i>
+                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Explosion with the formation of a shock wave</h5><p>The main damaging factors are:</p><ul><li>shock wave;</li><li>debris of destroyed equipment, collapsed buildings and structures.</li></ul><img src="{% static 'images/wave_blast.png' %}" class="img-fluid" alt="blast-wave"></div></div>'></i>
                 </th>
-                <th scope="col">Сценарій 2
+                <th scope="col">Scenario 2
                     <i class="icon-info-sign" data-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover"
-                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Пожежа проливу нафтопродуктів</h5><p>Основними вражаючими факторами  є:</p><ul><li>теплове випромінювання та гарячі продукти горіння;</li><li>відкрите полум’я та палаючі нафтопродукти.</li><li>токсичні продукти горіння.</li></ul><img src="{% static 'images/fire.png' %}" class="img-fluid" alt="fire"></div></div>'></i>
+                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Oil products spill burning</h5><p>The main damaging factors are:</p><ul><li>heat radiation and hot combustion products;</li><li>open flames and burning oil products;</li><li>toxic combustion products.</li></ul><img src="{% static 'images/fire.png' %}" class="img-fluid" alt="fire"></div></div>'></i>
                 </th>
-                <th scope="col">Сценарій 3
+                <th scope="col">Scenario 3
                     <i class="icon-info-sign" data-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover"
-                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Вибух із утворенням «Вогняної кулі»</h5><p>Основними вражаючими факторами є:</p><ul><li>теплове випромінювання та гарячі продукти горіння;</li><li>відкрите полум’я та палаючі нафтопродукти.</li></ul><img src="{% static 'images/fire_ball.png' %}" class="img-fluid" alt="fire-ball"></div></div>'></i>
+                       data-bs-content='<div class="media"><div class="media-body"><h5 class="media-heading">Explosion with the formation of «Fireball»</h5><p>The main damaging factors are:</p><ul><li>heat radiation and hot combustion products;</li><li>open flames and burning oil products.</li></ul><img src="{% static 'images/fire_ball.png' %}" class="img-fluid" alt="fire-ball"></div></div>'></i>
                 </th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Щільність населення в районі поблизу АЗС</td>
+                <td>Population density in the area near the petrol station </td>
                 <td>{{ form_blast_wave.S_blast_wave1 }}</td>
                 <td>{{ form_fire.S_fire1 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball1 }}</td>
             </tr>
             <tr>
-                <td>Характер зони, в якій перебуває АЗС: житлової забудови, промислова, сільськогосподарська,
-                    рекреаційна тощо
+                <td>The nature of the area in which the petrol station is located: residential, industrial, agricultural, recreational, etc.
                 </td>
                 <td>{{ form_blast_wave.S_blast_wave2 }}</td>
                 <td>{{ form_fire.S_fire2 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball2 }}</td>
             </tr>
             <tr>
-                <td>Наявність поблизу АЗС соціально важливої інфраструктури: стадіони, школи, лікарні і т.п.</td>
+                <td>The presence of socially important infrastructure near the petrol station: stadiums, schools, hospitals, etc.</td>
                 <td>{{ form_blast_wave.S_blast_wave3 }}</td>
                 <td>{{ form_fire.S_fire3 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball3 }}</td>
             </tr>
             <tr>
-                <td>Середній рівень доходів жителів району, у якому розміщена АЗС</td>
+                <td>Average income level of residents of the area where the petrol station is located </td>
                 <td>{{ form_blast_wave.S_blast_wave4 }}</td>
                 <td>{{ form_fire.S_fire4 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball4 }}</td>
             </tr>
             <tr>
-                <td>Потенціал зростання провінції, де знаходиться АЗС</td>
+                <td>The growth potential of the area where the petrol station is located</td>
                 <td>{{ form_blast_wave.S_blast_wave5 }}</td>
                 <td>{{ form_fire.S_fire5 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball5 }}</td>
             </tr>
             <tr>
-                <td>Наявність поблизу АЗС пам’яток культури</td>
+                <td>Presence of cultural monuments near the petrol station </td>
                 <td>{{ form_blast_wave.S_blast_wave6 }}</td>
                 <td>{{ form_fire.S_fire6 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball6 }}</td>
             </tr>
             <tr>
-                <td>Знаходження в зоні бойових дій або близькість до цієї зони</td>
+                <td>Location in or proximity to a war zone</td>
                 <td>{{ form_blast_wave.S_blast_wave7 }}</td>
                 <td>{{ form_fire.S_fire7 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball7 }}</td>
             </tr>
             <tr>
-                <td>Кваліфікація персоналу</td>
+                <td>Qualification of personnel</td>
                 <td>{{ form_blast_wave.S_blast_wave8 }}</td>
                 <td>{{ form_fire.S_fire8 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball8 }}</td>
             </tr>
             <tr>
-                <td>АЗС як криміногенний фактор – наявність «тіньових» АЗС, на яких можуть не дотримуватись всі норми
-                    безпеки
+                <td>Petrol stations as a crime factor - the presence of "shadow" petrol stations that may not comply with all safety standards
                 </td>
                 <td>{{ form_blast_wave.S_blast_wave9 }}</td>
                 <td>{{ form_fire.S_fire9 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball9}}</td>
             </tr>
             <tr>
-                <td>Наслідки для ринку праці</td>
+                <td>Consequences for the labour market</td>
                 <td>{{ form_blast_wave.S_blast_wave10 }}</td>
                 <td>{{ form_fire.S_fire10 }}</td>
                 <td>{{ form_fire_ball.S_fire_ball10 }}</td>
@@ -134,18 +131,18 @@
             </tbody>
         </table>
         <div class="col-md-12 mb-3">
-            <label class="form-control-label" for="adding_factors">Чи необхідно, на вашу думку, додати якісь
-                фактори?</label>
+            <label class="form-control-label" for="adding_factors">Do you think it is necessary to add any
+                factors?</label>
             {{ form_blast_wave.adding_factors }}
         </div>
         <div class="col-md-12 mb-3">
-            <label class="form-control-label" for="additional_comment">Ваш додатковий коментар.</label>
+            <label class="form-control-label" for="additional_comment">Your additional comment.</label>
             {{ form_blast_wave.additional_comment }}
         </div>
         <hr class="mb-4">
         <div class="text-center col-md-12">
-            <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Повернутися назад</a>
-            <button id='delete_row' class="btn btn-outline-success btn-block" type="submit">Надіслати</button>
+            <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "ranking" %}">Go back</a>
+            <button id='delete_row' class="btn btn-outline-success btn-block" type="submit">Send</button>
         </div>
     </form>
 </div>

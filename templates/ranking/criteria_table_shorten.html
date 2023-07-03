@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 
-    <title>Ранжування факторів</title>
+    <title>Factors ranking</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,67 +27,67 @@
 
 <div class="container mt-3">
     <div class="py-2 text">
-        <h5>Опитування задля картографування ризиків автозаправних станцій (АЗС) Одеського регіону</h5>
+        <h2 class="text-center">Gas stations risk mapping survey</h2>
         <hr class="mb-4">
     </div>
     <div class="alert alert-warning" role="alert">
-        Ви можете закривати дану або інші сторінки цієї форми та повертатись до них: заповнювати, редагувати власні відповіді протягом двох тижнів.<br><br>
-        Після того, як Ви натисните кнопку "Надіслати" на цій сторінці, Ви більше не зможете змінити свою відповідь. <br><br>
-        Для відправки необхідно заповнити принаймні 1 группу факторів.
+        You can close this or other pages of this form and return to them: fill in and edit your answers within two weeks.<br><br>
+        Once you click the "Submit" button on this page, you will not be able to change your answer. <br><br>
+        At least 1 group of factors must be filled in to form be send.
     </div>
     <table class="table table-striped">
         <thead class="thead">
         <tr>
-            <th scope="col">Економічні</th>
-            <th scope="col">Соціальні</th>
-            <th scope="col">Екологічні</th>
+            <th scope="col">Economic</th>
+            <th scope="col">Social</th>
+            <th scope="col">Environmental</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>10 факторів - {% if economic_status %}
+            <td>10 factors - {% if economic_status %}
                 <span id="boot-icon" class="bi bi-check"
                       style="font-size: 15px; border: solid; color: rgb(0, 128, 55); -webkit-text-stroke-width: 2px;"></span>{% endif %}
                 <br>
-                <a href="{% url "economic-ranking" %}">Перейти до ранжування</a>
+                <a href="{% url "economic-ranking" %}">Go to the ranking</a>
             </td>
-            <td>10 факторів - {% if social_status %}
+            <td>10 factors - {% if social_status %}
                 <span id="boot-icon" class="bi bi-check"
                       style="font-size: 15px; border: solid; color: rgb(0, 128, 55); -webkit-text-stroke-width: 2px;"></span>{% endif %}
                 <br>
-                <a href="{% url "social-ranking" %}">Перейти до ранжування</a>
+                <a href="{% url "social-ranking" %}">Go to the ranking</a>
             </td>
-            <td>11 факторів - {% if environmental_status %}
+            <td>11 factors - {% if environmental_status %}
                 <span id="boot-icon" class="bi bi-check"
                       style="font-size: 15px; border: solid; color: rgb(0, 128, 55); -webkit-text-stroke-width: 2px;"></span>{% endif %}
                 <br>
-                <a href="{% url "environmental-ranking" %}">Перейти до ранжування</a>
+                <a href="{% url "environmental-ranking" %}">Go to the ranking</a>
             </td>
 
         </tbody>
     </table>
     <hr class="mb-4">
     <div class="text-center col-md-12">
-        <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "update-user" %}">Повернутися назад</a>
+        <a id="back" class="btn btn-outline-secondary btn-block" href="{% url "update-user" %}">Go back</a>
         {% if any_column_is_ready %}
-            <a class="btn btn-outline-success btn-block" type="submit" href="{% url "log-out" %}">Надіслати</a>
+            <a class="btn btn-outline-success btn-block" type="submit" href="{% url "log-out" %}">Submit</a>
         {% else %}
             <a class="btn btn-outline-success btn-block" type="submit" data-toggle="modal" href="#attention"
-               data-bs-toggle="modal" data-bs-target="#attention">Надіслати</a>
+               data-bs-toggle="modal" data-bs-target="#attention">Submit</a>
         {% endif %}
         <!-- Modal -->
         <div class="modal fade" id="attention" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Увага!</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Attention!</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Заповніть, будь ласка, принаймні 1 групу факторів.
+                        Please fill in at least 1 group of factors.
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Ок</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Ok</button>
                     </div>
                 </div>
             </div>
