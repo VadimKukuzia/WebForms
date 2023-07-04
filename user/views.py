@@ -49,7 +49,7 @@ def update(request):
 
     else:
         form = UserRegisterForm(instance=request.user)
-    return render(request, 'user/index.html', {'form': form})
+    return render(request, 'user/index.html', {'form': form, 'update': True})
 
 
 def log_out(request):
