@@ -3,6 +3,16 @@ from django import forms
 from .models import User
 from django.contrib.auth.forms import UserCreationForm
 
+
+data_processing_consent_choices = (
+    (1, 'Yes'),
+    (0, 'No')
+)
+content_familiar_choices = (
+    (1, 'Yes'),
+    (0, 'No')
+)
+
 sex_choices = (
     ('M', 'Male'),
     ('F', 'Female')
@@ -15,9 +25,9 @@ age_choices = (
 )
 income_choices = (
     ('', 'Choose...'),
-    (1, 'Small'),
+    (1, 'Low'),
     (2, 'Medium'),
-    (3, 'Large')
+    (3, 'High')
 )
 marital_status_choices = (
     (1, 'Married'),
@@ -30,9 +40,8 @@ children_status_choices = (
 education_choices = (
     ('', 'Choose...'),
     (1, 'Complete secondary'),
-    (2, 'Vocational'),
-    (3, 'Basic higher'),
-    (4, 'Complete higher')
+    (2, 'Bachelor`s degree'),
+    (3, 'Master`s degree')
 )
 degree_choices = (
     (1, 'Yes'),
@@ -88,6 +97,9 @@ class MyRadioSelect(django.forms.RadioSelect):
 
 
 class UserRegisterForm(UserCreationForm):
+    data_processing_consent = forms.IntegerField(widget=MyRadioSelect(choices=data_processing_consent_choices, attrs={'class': 'custom-control-input', 'name': 'data_processing_consent'}))
+    content_familiar = forms.IntegerField(widget=MyRadioSelect(choices=content_familiar_choices, attrs={'class': 'custom-control-input', 'name': 'content_familiar'}))
+
     name = forms.CharField(widget=forms.TextInput(
         attrs={'type': "text", 'class': "form-control", 'id': "Name", 'placeholder': 'Your answer'}))
     sex = forms.CharField(label="Стать", widget=MyRadioSelect(choices=sex_choices,

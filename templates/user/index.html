@@ -33,6 +33,39 @@
             <div class="row">
                 <div class="col">
                     <div class="col-md-12 mb-3">
+                        <label class="form-control-label" for="data_processing_consent">Do you consent to the processing of your data?</label>
+                        <div class="d-block">
+                            {% for data_processing_consent in form.data_processing_consent %}
+                                <div class="custom-control custom-radio">
+                                    {{ data_processing_consent }}
+                                    {% if forloop.last %}
+                                        <div class="invalid-feedback">Choose one of the answers</div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-control-label" for="content_familiar">Are you familiar with the content of the project?</label>
+                        <div class="d-block">
+                            {% for content_familiar in form.content_familiar %}
+                                <div class="custom-control custom-radio">
+                                    {{ content_familiar }}
+                                    {% if forloop.last %}
+                                        <div class="invalid-feedback">Choose one of the answers</div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <hr class="mb-4">
+            <div class="row">
+                <div class="col">
+                    <div class="col-md-12 mb-3">
                         <label class="form-control-label" for="Name">First and last name</label>
                         {{ form.name }}
                         <div class="invalid-feedback">Enter a valid name</div>
