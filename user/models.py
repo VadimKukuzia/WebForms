@@ -31,6 +31,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
     name = models.CharField(max_length=255, unique=False)
 
+    data_processing_consent = models.IntegerField(default=1)
+    content_familiar = models.IntegerField(default=1)
+
     sex = models.CharField(default='M')
     age = models.IntegerField(default=1)
     income = models.IntegerField(default=1)

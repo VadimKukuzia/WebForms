@@ -16,187 +16,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>
-    <link href="{% static 'css/forms.css' %}" rel="stylesheet">
-</head>
-
-<body class="bg-light">
-
-<div class="container mt-3">
-    <div class="text text-center">
-        <h5>Вкажіть коротку інформацію про себе для отримання статистичних даних</h5>
-        <p class="text-end" style="color:red">*усі поля є обов'язковими для заповнення</p>
-        <hr class="mb-4">
-    </div>
-    <div class="card">
-        <form class="needs-validation" method="post" onsubmit="return handleData()" novalidate>
-            {% csrf_token %}
-            <div class="row">
-                <div class="col">
-                    <div class="col-md-12 mb-3">
-                        <label class="form-control-label" for="Name">Ім'я та Прізвище</label>
-                        {{ form.name }}
-                        <div class="invalid-feedback">Введіть коректне ім'я</div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="col-md-12 mb-3">
-                        <label class="form-control-label" for="email">Email для зворотнього зв'язку</label>
-                        {{ form.email }}
-                        <div class="invalid-feedback">Введіть коректний емейл</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Стать</div>
-                        <div class="d-block">
-                            {% for sex in form.sex %}
-                                <div class="custom-control custom-radio">
-                                    {{ sex }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label class="form-control-label" for="age">Вік</label>
-                        {{ form.age }}
-                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label class="form-control-label" for="income">Дохід</label>
-                        {{ form.income }}
-                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Сімейний стан</div>
-                        <div class="d-block">
-                            {% for marital_status in form.marital_status %}
-                                <div class="custom-control custom-radio">
-                                    {{ marital_status }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Наявність дітей</div>
-                        <div class="d-block">
-                            {% for children_status in form.children_status %}
-                                <div class="custom-control custom-radio">
-                                    {{ children_status }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="col-md-12 mb-3">
-                        <label class="form-control-label" for="education">Освіта</label>
-                        {{ form.education }}
-                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Науковий ступінь</div>
-                        <div class="d-block">
-                            {% for degree in form.degree %}
-                                <div class="custom-control custom-radio">
-                                    {{ degree }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div onchange="return handleData()">
-                            <div class="form-control-label">Спрямування освіти</div>
-                            <div class="custom-control custom-checkbox">
-                                {{ form.economical_education_direction }} {{ form.economical_education_direction.label }}
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                {{ form.technical_education_direction }} {{ form.technical_education_direction.label }}
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                {{ form.environmental_education_direction }} {{ form.environmental_education_direction.label }}
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                {{ form.humanitarian_education_direction }} {{ form.humanitarian_education_direction.label }}
-                            </div>
-                            <div style="visibility:hidden;" id="chk_option_error">Оберіть одну з відповідей</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="col-md-12 mb-3">
-                        <label class="form-control-label" for="driving_experience">Досвіт користуванням
-                            автомобілю</label>
-                        {{ form.driving_experience }}
-                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Чи пов’язана ваша проф. діяльність з ризиком, або його оцінкою чи управлінням?</div>
-                        <div class="d-block">
-                            {% for work_risk in form.work_risk %}
-                                <div class="custom-control custom-radio">
-                                    {{ work_risk }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Чи розташовано АЗС поблизу місця Вашої роботи?</div>
-                        <div class="d-block">
-                            {% for station_nearby_work in form.station_nearby_work %}
-                                <div class="custom-control custom-radio">
-                                    {{ station_nearby_work }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="form-control-label">Чи розташовано АЗС поблизу місця Вашого житла?</div>
-                        <div class="d-block">
-                            {% for station_nearby_house in form.station_nearby_house %}
-                                <div class="custom-control custom-radio">
-                                    {{ station_nearby_house }}
-                                    {% if forloop.last %}
-                                        <div class="invalid-feedback">Оберіть одну з відповідей</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-            </div>
-            <hr class="mb-4">
-            <div class="text-center col-md-12">
-                <button class="btn-primary btn-lg btn-block" type="submit">Перейти до опитування</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="{% static "js/input-cheking.js" %}"></script>
-<script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="{% static "js/input-cheking.js" %}"></script>
+    <script>
     function handleData() {
         var form_data = new FormData(document.querySelector("form"));
 
@@ -212,5 +34,249 @@
         }
     }
 </script>
+<script>
+    function basic_agreement_check() {
+        if (!(document.getElementById("id_data_processing_consent_0").checked
+            && document.getElementById("id_content_familiar_0").checked)) {
+            blur_form()
+        } else {
+            unblur_form()
+        }
+    }
+
+    function blur_form() {
+        document.getElementById("chk_option_error").style.visibility = "hidden";
+        $("#disable-form").find("input,select,textarea,button").prop("disabled", true);
+        document.getElementById("disable-form").classList.add("background-blur");
+        document.getElementById('agreement_required').style.visibility = "visible";
+        document.getElementById('agreement_required').style.display = "block";
+    }
+
+    function unblur_form() {
+        $("#disable-form").find("input,select,textarea,button").prop("disabled", false);
+        document.getElementById("disable-form").classList.remove("background-blur");
+        document.getElementById('agreement_required').style.visibility = "hidden";
+        document.getElementById('agreement_required').style.display = "none";
+    }
+</script>
+    <link href="{% static 'css/forms.css' %}" rel="stylesheet">
+</head>
+
+<body class="bg-light" onpageshow="return basic_agreement_check()">
+
+<div class="container mt-3">
+    <div class="text text-center">
+        <h5>Вкажіть коротку інформацію про себе для отримання статистичних даних</h5>
+        <p class="text-end" style="color:red">*усі поля є обов'язковими для заповнення</p>
+        <hr class="mb-4">
+    </div>
+    <div class="card">
+        <form class="needs-validation" method="post" onsubmit="return handleData()" novalidate>
+            {% csrf_token %}
+            <div class="row" onchange="basic_agreement_check()">
+                <div class="col">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-control-label" for="data_processing_consent">Чи даєте Ви згоду на обробку даних?</label>
+                        <div class="d-block">
+                            {% for data_processing_consent in form.data_processing_consent %}
+                            <div class="custom-control custom-radio">
+                                {{ data_processing_consent }}
+                                {% if forloop.last %}
+                                <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-control-label" for="content_familiar">Чи ознайомлено Вас зі змістом проекту? </label>
+                        <div class="d-block">
+                            {% for content_familiar in form.content_familiar %}
+                            <div class="custom-control custom-radio">
+                                {{ content_familiar }}
+                                {% if forloop.last %}
+                                <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <p id="agreement_required" class="text-center" style="color:red; visibility: hidden; display: none;">Надайте відповідні дозволи для подальшого заповнення форми</p>
+            <hr class="mb-4">
+            <div id="disable-form">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-control-label" for="Name">Ім'я та Прізвище</label>
+                            {{ form.name }}
+                            <div class="invalid-feedback">Введіть коректне ім'я</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-control-label" for="email">Email для зворотнього зв'язку</label>
+                            {{ form.email }}
+                            <div class="invalid-feedback">Введіть коректний емейл</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Стать</div>
+                            <div class="d-block">
+                                {% for sex in form.sex %}
+                                    <div class="custom-control custom-radio">
+                                        {{ sex }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-control-label" for="age">Вік</label>
+                            {{ form.age }}
+                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-control-label" for="income">Дохід</label>
+                            {{ form.income }}
+                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Сімейний стан</div>
+                            <div class="d-block">
+                                {% for marital_status in form.marital_status %}
+                                    <div class="custom-control custom-radio">
+                                        {{ marital_status }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Наявність дітей</div>
+                            <div class="d-block">
+                                {% for children_status in form.children_status %}
+                                    <div class="custom-control custom-radio">
+                                        {{ children_status }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-control-label" for="education">Освіта</label>
+                            {{ form.education }}
+                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Науковий ступінь</div>
+                            <div class="d-block">
+                                {% for degree in form.degree %}
+                                    <div class="custom-control custom-radio">
+                                        {{ degree }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div onchange="return handleData()">
+                                <div class="form-control-label">Спрямування освіти</div>
+                                <div class="custom-control custom-checkbox">
+                                    {{ form.economical_education_direction }} {{ form.economical_education_direction.label }}
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    {{ form.technical_education_direction }} {{ form.technical_education_direction.label }}
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    {{ form.environmental_education_direction }} {{ form.environmental_education_direction.label }}
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    {{ form.humanitarian_education_direction }} {{ form.humanitarian_education_direction.label }}
+                                </div>
+                                <div style="visibility:hidden;" id="chk_option_error">Оберіть одну з відповідей</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-control-label" for="driving_experience">Досвіт користуванням
+                                автомобілю</label>
+                            {{ form.driving_experience }}
+                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Чи пов’язана ваша проф. діяльність з ризиком, або його
+                                оцінкою
+                                чи управлінням?
+                            </div>
+                            <div class="d-block">
+                                {% for work_risk in form.work_risk %}
+                                    <div class="custom-control custom-radio">
+                                        {{ work_risk }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Чи розташовано АЗС поблизу місця Вашої роботи?</div>
+                            <div class="d-block">
+                                {% for station_nearby_work in form.station_nearby_work %}
+                                    <div class="custom-control custom-radio">
+                                        {{ station_nearby_work }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-control-label">Чи розташовано АЗС поблизу місця Вашого житла?</div>
+                            <div class="d-block">
+                                {% for station_nearby_house in form.station_nearby_house %}
+                                    <div class="custom-control custom-radio">
+                                        {{ station_nearby_house }}
+                                        {% if forloop.last %}
+                                            <div class="invalid-feedback">Оберіть одну з відповідей</div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+                    <div class="text-center col-md-12">
+                        <button class="btn-primary btn-lg btn-block" type="submit">Перейти до опитування</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

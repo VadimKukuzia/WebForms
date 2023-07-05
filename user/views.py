@@ -27,7 +27,7 @@ def register(request):
             return redirect('ranking')
         else:
             if form.has_error('email') or form.has_error('username'):
-                return render(request, 'user/already_done_view.html')
+                return redirect('already-done')
 
     else:
         form = UserRegisterForm()
@@ -45,12 +45,16 @@ def update(request):
             return redirect('ranking')
         else:
             if form.has_error('email'):
-                return render(request, 'user/already_done_view.html')
+                return redirect('already-done')
 
     else:
         form = UserRegisterForm(instance=request.user)
     return render(request, 'user/index.html', {'form': form})
 
+
+@never_cache
+def already_filled_in(request):
+    return render(request, 'user/already_done_view.html')
 
 def log_out(request):
     logout(request)
