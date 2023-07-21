@@ -34,7 +34,7 @@ marital_status_choices = (
 )
 children_status_choices = (
     (1, 'Є діти'),
-    (0, 'Нема дітей')
+    (0, 'Немає дітей')
 )
 education_choices = (
     ('', 'Обрати...'),

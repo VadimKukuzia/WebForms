@@ -216,15 +216,14 @@
                     </div>
                     <div class="col">
                         <div class="col-md-12 mb-3">
-                            <label class="form-control-label" for="driving_experience">Досвіт користуванням
-                                автомобілю</label>
+                            <label class="form-control-label" for="driving_experience">Досвід керування
+                                автомобілем</label>
                             {{ form.driving_experience }}
                             <div class="invalid-feedback">Оберіть одну з відповідей</div>
                         </div>
                         <div class="col-md-12 mb-3">
                             <div class="form-control-label">Чи пов’язана ваша проф. діяльність з ризиком, або його
-                                оцінкою
-                                чи управлінням?
+                                оцінкою чи управлінням?
                             </div>
                             <div class="d-block">
                                 {% for work_risk in form.work_risk %}
@@ -238,7 +237,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <div class="form-control-label">Чи розташовано АЗС поблизу місця Вашої роботи?</div>
+                            <div class="form-control-label">Чи розташована АЗС поблизу місця Вашої роботи?</div>
                             <div class="d-block">
                                 {% for station_nearby_work in form.station_nearby_work %}
                                     <div class="custom-control custom-radio">
@@ -251,7 +250,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <div class="form-control-label">Чи розташовано АЗС поблизу місця Вашого житла?</div>
+                            <div class="form-control-label">Чи розташована АЗС поблизу місця Вашого житла?</div>
                             <div class="d-block">
                                 {% for station_nearby_house in form.station_nearby_house %}
                                     <div class="custom-control custom-radio">
